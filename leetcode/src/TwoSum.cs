@@ -2,7 +2,7 @@
 
 public class TwoSum
 {
-    public int[] Find(int[] array, int target)
+    public (bool, int[]?) Find(int[] array, int target)
     {
         var cache = new Dictionary<int, int>();
         for (var i = 0; i < array.Length; i++)
@@ -11,10 +11,10 @@ public class TwoSum
             var second = target - first;
             if (cache.TryGetValue(second, out int index))
             {
-                return new int[] { index, i };
+                return (true, new int[] { index, i });
             }
             cache[first] = i;
         }
-        return new int[] { 0, 0 };
+        return (false, null);
     }
 }
